@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI 상담 — MOTORLAB</title>
+  <meta name="description" content="차량을 고르고 엔진·변속기·출력·연비·제원·서스펜션·승차감을 근거와 함께 묻는 MOTORLAB 질의응답 페이지" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600&display=swap" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="page-chat">
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="sil-veteran" viewBox="0 0 240 90">
+        <path d="M42 66 L86 52 L196 52" /><path d="M150 52 L150 34 L180 34 L180 52" />
+        <path d="M96 52 L88 26 L76 22" /><path d="M120 52 L120 44 L140 44" />
+        <circle cx="50" cy="66" r="12" /><circle cx="172" cy="62" r="22" /><circle cx="172" cy="62" r="2" />
+      </symbol>
+      <symbol id="sil-classic" viewBox="0 0 240 90">
+        <path d="M18 62 L22 46 L66 44 L78 44 L86 18 L156 18 L156 44 L204 44 Q220 46 224 60" />
+        <path d="M86 18 L80 44" /><path d="M120 18 L120 44" />
+        <path d="M74 62 L162 62" />
+        <circle cx="56" cy="62" r="15" /><circle cx="182" cy="62" r="15" />
+      </symbol>
+      <symbol id="sil-beetle" viewBox="0 0 240 90">
+        <path d="M18 64 Q16 50 36 44 Q64 12 122 12 Q178 12 206 44 Q224 50 222 64" />
+        <path d="M70 42 Q90 22 122 22 Q156 22 172 42 Z" />
+        <path d="M74 64 L166 64" />
+        <circle cx="56" cy="64" r="14" /><circle cx="186" cy="64" r="14" />
+      </symbol>
+      <symbol id="sil-coupe" viewBox="0 0 240 90">
+        <path d="M12 62 L16 50 Q26 44 52 42 Q82 22 118 21 Q156 21 184 38 Q212 43 226 52 L228 62" />
+        <path d="M70 42 Q92 28 118 28 Q146 28 166 40 Z" />
+        <path d="M74 62 L168 62" />
+        <circle cx="56" cy="62" r="14" /><circle cx="186" cy="62" r="14" />
+      </symbol>
+      <symbol id="sil-sedan" viewBox="0 0 240 90">
+        <path d="M12 62 L16 50 Q22 44 50 42 L80 24 Q90 19 110 19 L150 19 Q166 20 180 32 L194 42 Q218 44 226 52 L228 62" />
+        <path d="M78 42 L96 26 L128 26 L128 42 Z" /><path d="M136 26 L152 26 Q164 27 176 42 L136 42 Z" />
+        <path d="M74 62 L168 62" />
+        <circle cx="56" cy="62" r="14" /><circle cx="186" cy="62" r="14" />
+      </symbol>
+      <symbol id="sil-roadster" viewBox="0 0 240 90">
+        <path d="M10 62 L14 52 Q28 46 70 44 L94 42 L104 32 L114 42 L172 42 Q212 44 226 54 L228 62" />
+        <path d="M128 42 Q140 34 160 36" />
+        <path d="M74 62 L168 62" />
+        <circle cx="56" cy="62" r="14" /><circle cx="186" cy="62" r="14" />
+      </symbol>
+      <symbol id="sil-suv" viewBox="0 0 240 90">
+        <path d="M12 62 L14 46 Q20 40 46 38 L68 20 Q74 15 90 15 L178 15 Q192 16 202 28 L214 40 Q226 44 228 52 L228 62" />
+        <path d="M72 38 L90 22 L132 22 L132 38 Z" /><path d="M140 22 L180 22 Q190 23 198 38 L140 38 Z" />
+        <path d="M76 62 L166 62" />
+        <circle cx="58" cy="62" r="15" /><circle cx="184" cy="62" r="15" />
+      </symbol>
+      <symbol id="ico-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+      <symbol id="ico-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="ico-settings" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></symbol>
+      <symbol id="ico-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+      <symbol id="ico-send" viewBox="0 0 24 24"><path d="M4 12h14M12 5l7 7-7 7"/></symbol>
+      <symbol id="ico-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+      <symbol id="ico-alert" viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/></symbol>
+      <symbol id="ico-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></symbol>
+      <symbol id="ico-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></symbol>
+      <symbol id="ico-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- ===== 글로벌 내비게이션 ===== -->
+  <header class="gnav is-solid" id="gnav">
+    <div class="gnav__inner">
+      <a class="brand" href="index.html" aria-label="MOTORLAB 홈">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__word">MOTORLAB</span>
+      </a>
+      <nav class="gnav__links" aria-label="주요 메뉴">
+        <a href="chat.html" class="is-feature is-current" aria-current="page">AI 상담</a>
+        <a href="index.html?view=explore">차량 탐색</a>
+        <a href="index.html?view=compare">제원 비교</a>
+        <a href="index.html?view=fact">사실 확인</a>
+        <a href="index.html#chronicle">연대기</a>
+      </nav>
+      <div class="gnav__tools">
+        <span class="status-pill" id="statusPill" title="색인 상태">
+          <span class="status-pill__dot"></span><span class="status-pill__text">연결 중…</span>
+        </span>
+        <button class="icon-btn" id="openSettings" aria-label="검색 설정 열기">
+          <svg><use href="#ico-settings"/></svg>
+        </button>
+        <button class="icon-btn gnav__menu" id="openMenu" aria-label="메뉴 열기">
+          <svg><use href="#ico-menu"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== 질의응답 화면 (F2009) ===== -->
+  <main class="cp" id="cp">
+    <!-- 왼쪽: 차량 선택 -->
+    <aside class="cp-side" id="cpSide" aria-label="차량 선택">
+      <div class="cp-side__head">
+        <label class="label" for="carSearch">질문할 차량 · <span id="carCount">—</span>대</label>
+        <div class="search-field">
+          <svg><use href="#ico-search"/></svg>
+          <input id="carSearch" type="search" placeholder="모델명, 제조사, 연도" autocomplete="off" />
+        </div>
+        <div class="chip-row" id="fuelFilter" aria-label="동력원 필터"></div>
+      </div>
+      <ul class="car-list" id="carList" aria-label="차량 목록"></ul>
+    </aside>
+
+    <!-- 가운데: 대화 -->
+    <section class="cp-main" aria-label="대화">
+      <div class="cp-bar">
+        <button class="icon-btn cp-bar__toggle" id="toggleSide" type="button" aria-label="차량 목록 열고 닫기" aria-controls="cpSide">
+          <svg><use href="#ico-menu"/></svg>
+        </button>
+        <div class="cp-bar__car" id="barCar">
+          <span class="cp-bar__thumb" id="barThumb"></span>
+          <div>
+            <p class="eyebrow" id="chatMaker">—</p>
+            <h1 class="cp-bar__title" id="chatTitle">차량을 선택하세요</h1>
+          </div>
+        </div>
+        <div class="cp-bar__actions">
+          <span class="cp-bar__docs" id="barDocs"></span>
+          <button class="text-btn" id="toggleSpec" type="button" aria-controls="specPanel" aria-expanded="false">제원 보기</button>
+          <button class="text-btn" id="clearChat" type="button">대화 지우기</button>
+        </div>
+      </div>
+
+      <div class="sys-alerts sys-alerts--inline" id="sysAlerts" aria-live="polite"></div>
+
+      <div class="cp-log" id="chatLog" aria-live="polite"></div>
+
+      <div class="cp-bottom">
+        <div class="suggest" id="suggest"></div>
+        <form class="composer" id="composer" autocomplete="off">
+          <textarea id="question" rows="1" placeholder="차량을 고른 뒤 질문하세요" aria-label="질문 입력"></textarea>
+          <button class="composer__send" type="submit" aria-label="질문 보내기">
+            <svg><use href="#ico-send"/></svg>
+          </button>
+        </form>
+        <p class="disclaimer">
+          <svg><use href="#ico-info"/></svg>
+          제원은 연식·트림·판매 시장에 따라 다를 수 있습니다. Enter로 보내고 Shift+Enter로 줄을 바꿉니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- 오른쪽: 제원표 (열고 닫기) -->
+    <aside class="cp-spec" id="specPanel" aria-label="선택 차량 제원" aria-hidden="true"></aside>
+  </main>
+
+  <div class="cp-scrim" id="cpScrim" hidden></div>
+
+  <!-- ===== 설정 드로어 (F2005/F2006/F2014/F2015) ===== -->
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="drawer" id="settingsDrawer" aria-label="검색 설정" aria-hidden="true">
+    <div class="drawer__head">
+      <div>
+        <p class="eyebrow">Retrieval Settings</p>
+        <h3>검색 설정</h3>
+      </div>
+      <button class="icon-btn" id="closeSettings" aria-label="설정 닫기"><svg><use href="#ico-close"/></svg></button>
+    </div>
+    <div class="drawer__body">
+      <div class="field">
+        <div class="field__top"><label for="setTopK">근거 수 (Top-k)</label><output id="outTopK">6</output></div>
+        <input type="range" id="setTopK" min="2" max="12" step="1" value="6" />
+      </div>
+      <div class="field">
+        <span class="field__label">답변 모델</span>
+        <div class="segmented segmented--3" id="setModel"></div>
+        <p class="field__hint">검색어 추출·후보 선별은 <b id="utilityModel">—</b>가 맡고, 답변·비교·사실 확인은 여기서 고른 모델이 작성합니다.</p>
+      </div>
+      <div class="field">
+        <span class="field__label">검색 방식</span>
+        <div class="segmented" id="setMode">
+          <button type="button" data-mode="similarity" class="is-active">유사도</button>
+          <button type="button" data-mode="mmr">MMR</button>
+        </div>
+        <p class="field__hint">MMR은 후보를 넉넉히 가져온 뒤 내용이 겹치지 않게 근거를 고릅니다.</p>
+      </div>
+      <div class="field field--switch">
+        <label for="setCompareRag">RAG 전후 비교 <em class="field__sub">근거 없이 받은 답을 나란히</em></label>
+        <input type="checkbox" id="setCompareRag" class="switch" />
+      </div>
+      <div class="field field--switch">
+        <label for="setShowRetrieved">검색된 근거 전체 보기 <em class="field__sub">인용 안 된 청크 포함</em></label>
+        <input type="checkbox" id="setShowRetrieved" class="switch" />
+      </div>
+      <div class="field field--demo">
+        <span class="field__label">색인 설정 <em>서버 .env에서 변경</em></span>
+        <dl class="kv" id="serverInfo"><div><dt>상태</dt><dd>—</dd></div></dl>
+      </div>
+    </div>
+  </aside>
+
+  <nav class="mobile-menu" id="mobileMenu" aria-label="모바일 메뉴" hidden>
+    <a href="index.html">홈</a>
+    <a href="chat.html">AI 상담</a>
+    <a href="index.html?view=explore">차량 탐색</a>
+    <a href="index.html?view=compare">제원 비교</a>
+    <a href="index.html?view=fact">사실 확인</a>
+  </nav>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/chat-core.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>

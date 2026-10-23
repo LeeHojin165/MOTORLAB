@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MOTORLAB — 근거로 답하는 자동차 백과</title>
+  <meta name="description" content="1886년 벤츠 파텐트 모토르바겐부터 최신 전기차까지, 문서 근거와 함께 답하는 RAG 기반 자동차 지식 서비스" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600&display=swap" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ===== SVG 스프라이트: 차체 실루엣 (라인 아트) ===== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="sil-veteran" viewBox="0 0 240 90">
+        <path d="M42 66 L86 52 L196 52" /><path d="M150 52 L150 34 L180 34 L180 52" />
+        <path d="M96 52 L88 26 L76 22" /><path d="M120 52 L120 44 L140 44" />
+        <circle cx="50" cy="66" r="12" /><circle cx="172" cy="62" r="22" /><circle cx="172" cy="62" r="2" />
+      </symbol>
+      <symbol id="sil-classic" viewBox="0 0 240 90">
+        <path d="M18 62 L22 46 L66 44 L78 44 L86 18 L156 18 L156 44 L204 44 Q220 46 224 60" />
+        <path d="M86 18 L80 44" /><path d="M120 18 L120 44" />
+        <path d="M74 62 L162 62" />
+        <circle cx="56" cy="62" r="15" /><circle cx="182" cy="62" r="15" />
+      </symbol>
+      <symbol id="sil-beetle" viewBox="0 0 240 90">
+        <path d="M18 64 Q16 50 36 44 Q64 12 122 12 Q178 12 206 44 Q224 50 222 64" />
+        <path d="M70 42 Q90 22 122 22 Q156 22 172 42 Z" />
+        <path d="M74 64 L166 64" />
+        <circle cx="56" cy="64" r="14" /><circle cx="186" cy="64" r="14" />
+      </symbol>
+      <symbol id="sil-coupe" viewBox="0 0 240 90">
+        <path d="M12 62 L16 50 Q26 44 52 42 Q82 22 118 21 Q156 21 184 38 Q212 43 226 52 L228 62" />
+        <path d="M70 42 Q92 28 118 28 Q146 28 166 40 Z" />
+        <path d="M74 62 L168 62" />
+        <circle cx="56" cy="62" r="14" /><circle cx="186" cy="62" r="14" />
+      </symbol>
+      <symbol id="sil-sedan" viewBox="0 0 240 90">
+        <path d="M12 62 L16 50 Q22 44 50 42 L80 24 Q90 19 110 19 L150 19 Q166 20 180 32 L194 42 Q218 44 226 52 L228 62" />
+        <path d="M78 42 L96 26 L128 26 L128 42 Z" /><path d="M136 26 L152 26 Q164 27 176 42 L136 42 Z" />
+        <path d="M74 62 L168 62" />
+        <circle cx="56" cy="62" r="14" /><circle cx="186" cy="62" r="14" />
+      </symbol>
+      <symbol id="sil-roadster" viewBox="0 0 240 90">
+        <path d="M10 62 L14 52 Q28 46 70 44 L94 42 L104 32 L114 42 L172 42 Q212 44 226 54 L228 62" />
+        <path d="M128 42 Q140 34 160 36" />
+        <path d="M74 62 L168 62" />
+        <circle cx="56" cy="62" r="14" /><circle cx="186" cy="62" r="14" />
+      </symbol>
+      <symbol id="sil-suv" viewBox="0 0 240 90">
+        <path d="M12 62 L14 46 Q20 40 46 38 L68 20 Q74 15 90 15 L178 15 Q192 16 202 28 L214 40 Q226 44 228 52 L228 62" />
+        <path d="M72 38 L90 22 L132 22 L132 38 Z" /><path d="M140 22 L180 22 Q190 23 198 38 L140 38 Z" />
+        <path d="M76 62 L166 62" />
+        <circle cx="58" cy="62" r="15" /><circle cx="184" cy="62" r="15" />
+      </symbol>
+      <symbol id="ico-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+      <symbol id="ico-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="ico-settings" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></symbol>
+      <symbol id="ico-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+      <symbol id="ico-send" viewBox="0 0 24 24"><path d="M4 12h14M12 5l7 7-7 7"/></symbol>
+      <symbol id="ico-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+      <symbol id="ico-alert" viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/></symbol>
+      <symbol id="ico-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></symbol>
+      <symbol id="ico-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></symbol>
+      <symbol id="ico-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- ===== 글로벌 내비게이션 ===== -->
+  <header class="gnav" id="gnav">
+    <div class="gnav__inner">
+      <a class="brand" href="#top" aria-label="MOTORLAB 홈">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__word">MOTORLAB</span>
+      </a>
+      <nav class="gnav__links" aria-label="주요 메뉴">
+        <a href="chat.html" class="is-feature">AI 상담</a>
+        <a href="#workspace" data-goto="qa">모델 Q&amp;A</a>
+        <a href="#workspace" data-goto="explore">차량 탐색</a>
+        <a href="#workspace" data-goto="compare">제원 비교</a>
+        <a href="#workspace" data-goto="fact">사실 확인</a>
+        <a href="#chronicle">연대기</a>
+      </nav>
+      <div class="gnav__tools">
+        <span class="status-pill" id="statusPill" title="색인 상태">
+          <span class="status-pill__dot"></span><span class="status-pill__text">연결 중…</span>
+        </span>
+        <button class="icon-btn" id="openSettings" aria-label="검색 설정 열기">
+          <svg><use href="#ico-settings"/></svg>
+        </button>
+        <button class="icon-btn gnav__menu" id="openMenu" aria-label="메뉴 열기">
+          <svg><use href="#ico-menu"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== 히어로 ===== -->
+  <section class="hero" id="top">
+    <div class="hero__media" id="heroMedia" aria-hidden="true"></div>
+    <div class="hero__shade" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <p class="eyebrow eyebrow--light">RAG · Automotive Knowledge Service</p>
+      <h1 class="hero__title">
+        <span class="hero__year">1886</span>
+        <span class="hero__dash" aria-hidden="true"></span>
+        <span class="hero__year">2026</span>
+      </h1>
+      <p class="hero__lead">모든 자동차에 대한 질문에,<br />문서 근거와 함께 답합니다.</p>
+      <p class="hero__sub">벤츠 파텐트 모토르바겐부터 테슬라 로드스터, 2026년형 전기차까지. 엔진·변속기·출력·토크·구동방식·연비·제원·서스펜션·승차감을 근거 번호와 원문 출처로 확인하세요.</p>
+      <div class="hero__cta">
+        <a class="btn btn--light" href="chat.html">질문 시작하기 <svg><use href="#ico-arrow"/></svg></a>
+        <a class="btn btn--ghost-light" href="#workspace" data-goto="explore">조건으로 차량 찾기</a>
+      </div>
+      <dl class="hero__stats">
+        <div><dt>차량 메타데이터</dt><dd id="statMeta">—</dd></div>
+        <div><dt>수집 문서</dt><dd id="statDocs">—</dd></div>
+        <div><dt>색인 청크</dt><dd id="statChunks">—</dd></div>
+        <div><dt>검색 방식</dt><dd id="statMode">—</dd></div>
+      </dl>
+    </div>
+    <p class="hero__credit" id="heroCredit"></p>
+  </section>
+
+  <!-- ===== 시스템 알림 영역 (F2012) ===== -->
+  <div class="sys-alerts" id="sysAlerts" aria-live="polite"></div>
+
+  <!-- ===== 연대기 ===== -->
+  <section class="chronicle" id="chronicle">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Chronicle</p>
+        <h2 class="section-title">자동차 140년, 한 줄로.</h2>
+      </div>
+      <div class="chronicle__eras" id="eraFilter" role="tablist" aria-label="시대 필터"></div>
+    </div>
+    <div class="chronicle__track" id="chronicleTrack" tabindex="0" aria-label="연대순 차량 목록"></div>
+  </section>
+
+  <!-- ===== 워크스페이스 ===== -->
+  <main class="workspace" id="workspace">
+    <div class="tabs" role="tablist" aria-label="서비스 기능">
+      <button class="tab is-active" role="tab" data-view="qa" aria-selected="true"><span class="tab__no">01</span>모델 Q&amp;A</button>
+      <button class="tab" role="tab" data-view="explore" aria-selected="false"><span class="tab__no">02</span>차량 탐색</button>
+      <button class="tab" role="tab" data-view="compare" aria-selected="false"><span class="tab__no">03</span>제원 비교</button>
+      <button class="tab" role="tab" data-view="fact" aria-selected="false"><span class="tab__no">04</span>사실 확인</button>
+    </div>
+
+    <!-- 01. 모델 Q&A (F2009 / F2006~F2008) -->
+    <section class="view is-active" id="view-qa" role="tabpanel">
+      <div class="qa">
+        <!-- 좌측: 차량 선택 -->
+        <aside class="qa__side" aria-label="차량 선택">
+          <div class="side-block">
+            <label class="label" for="carSearch">질문할 차량</label>
+            <div class="search-field">
+              <svg><use href="#ico-search"/></svg>
+              <input id="carSearch" type="search" placeholder="모델명, 제조사, 연도" autocomplete="off" />
+            </div>
+            <div class="chip-row" id="fuelFilter" aria-label="동력원 필터"></div>
+          </div>
+          <ul class="car-list" id="carList" aria-label="차량 목록"></ul>
+          <div class="side-meta">
+            <div class="side-meta__row"><span>차량 메타데이터 색인</span><strong id="sideMetaCount">—</strong></div>
+            <div class="side-meta__row"><span>이 차량의 수집 문서</span><strong id="sideDocCount">—</strong></div>
+            <ul class="side-meta__docs" id="sideDocList"></ul>
+          </div>
+        </aside>
+
+        <!-- 중앙: 채팅 -->
+        <div class="qa__chat">
+          <div class="chat-head" id="chatHead">
+            <div class="chat-head__title">
+              <p class="eyebrow" id="chatMaker">—</p>
+              <h3 id="chatTitle">차량을 선택하세요</h3>
+            </div>
+            <div class="chat-head__actions">
+              <a class="text-btn" id="openWide" href="chat.html">넓은 화면으로 ↗</a>
+              <button class="text-btn" id="clearChat" type="button">대화 지우기</button>
+            </div>
+          </div>
+
+          <div class="chat-log" id="chatLog" aria-live="polite">
+            <div class="chat-empty" id="chatEmpty">
+              <svg class="chat-empty__car"><use href="#sil-sedan"/></svg>
+              <p>왼쪽 목록이나 연대기에서 차량을 고르면<br />그 차량에 대한 대화가 시작됩니다.</p>
+            </div>
+          </div>
+
+          <div class="suggest" id="suggest"></div>
+
+          <form class="composer" id="composer" autocomplete="off">
+            <textarea id="question" rows="1" placeholder="예) 이 차의 엔진과 변속기, 최고출력과 토크를 알려줘" aria-label="질문 입력"></textarea>
+            <button class="composer__send" type="submit" aria-label="질문 보내기">
+              <svg><use href="#ico-send"/></svg>
+            </button>
+          </form>
+          <p class="disclaimer">
+            <svg><use href="#ico-info"/></svg>
+            제원은 연식·트림·판매 시장에 따라 다를 수 있습니다. 구매·정비 판단은 제조사 공식 자료를 함께 확인하세요.
+          </p>
+        </div>
+
+        <!-- 우측: 제원표 -->
+        <aside class="qa__spec" id="specPanel" aria-label="선택 차량 제원">
+          <div class="spec-empty">선택한 차량의 제원표가 여기에 표시됩니다.</div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 02. 조건 기반 탐색 (F2011) -->
+    <section class="view" id="view-explore" role="tabpanel" hidden>
+      <div class="feature-head">
+        <p class="eyebrow">Explore</p>
+        <h2 class="section-title">원하는 조건을 문장으로.</h2>
+        <p class="feature-desc">메타데이터 색인에서 후보를 찾은 뒤, 조건에 맞는 차량만 골라 보여줍니다. 카드를 누르면 그 차량의 대화로 이어집니다.</p>
+      </div>
+      <form class="big-search" id="exploreForm">
+        <svg><use href="#ico-search"/></svg>
+        <input id="exploreInput" type="text" placeholder="예) 1990년 이전의 후륜구동 수동 스포츠카" aria-label="탐색 조건" />
+        <button class="btn btn--dark" type="submit">찾기 <svg><use href="#ico-arrow"/></svg></button>
+      </form>
+      <div class="chip-row chip-row--examples" id="exploreExamples"></div>
+      <div class="progress-line" id="exploreProgress" hidden></div>
+      <div class="explore-summary" id="exploreSummary"></div>
+      <div class="car-grid" id="exploreResults"></div>
+    </section>
+
+    <!-- 03. 제원 비교 (F2010 특화 기능) -->
+    <section class="view" id="view-compare" role="tabpanel" hidden>
+      <div class="feature-head">
+        <p class="eyebrow">Compare</p>
+        <h2 class="section-title">시대를 넘어, 나란히.</h2>
+        <p class="feature-desc">최대 3대를 골라 제원을 나란히 비교합니다. 각 수치에는 근거 번호가 붙고, 문서에서 확인되지 않은 값은 비워 둡니다.</p>
+      </div>
+      <div class="compare-pick" id="comparePick"></div>
+      <div class="compare-table-wrap">
+        <table class="compare-table" id="compareTable"></table>
+      </div>
+      <div class="ai-card" id="compareSummary" hidden></div>
+    </section>
+
+    <!-- 04. 사실 확인 (F2010 특화 기능) -->
+    <section class="view" id="view-fact" role="tabpanel" hidden>
+      <div class="feature-head">
+        <p class="eyebrow">Fact Check</p>
+        <h2 class="section-title">그 말, 사실일까.</h2>
+        <p class="feature-desc">자동차에 대한 주장을 입력하면 색인된 문서만 근거로 <b>사실 · 사실 아님 · 확인 불가</b>를 판정합니다.</p>
+      </div>
+      <form class="fact-form" id="factForm">
+        <div class="fact-form__row">
+          <label class="label" for="factCar">대상 차량</label>
+          <select id="factCar" class="select"></select>
+        </div>
+        <div class="fact-form__row fact-form__row--grow">
+          <label class="label" for="factClaim">확인할 주장</label>
+          <input id="factClaim" class="input" type="text" placeholder="예) 아우디 콰트로는 5기통 터보 엔진을 얹었다" />
+        </div>
+        <button class="btn btn--dark" type="submit">판정하기 <svg><use href="#ico-arrow"/></svg></button>
+      </form>
+      <div class="chip-row chip-row--examples" id="factExamples"></div>
+      <div class="progress-line" id="factProgress" hidden></div>
+      <div id="factResult"></div>
+    </section>
+  </main>
+
+  <!-- ===== 푸터 (NF2007 출처와 이용 조건) ===== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="brand__word">MOTORLAB</span>
+        <p>RAG 기반 자동차 도메인 지식 서비스 · AI 코어 프로젝트 2회차</p>
+      </div>
+      <div class="footer__col">
+        <h4>데이터 출처</h4>
+        <ul>
+          <li>차량 메타데이터 — 직접 구성 (제조사 공개 제원·위키백과 참고)</li>
+          <li>한국어·영어 위키백과 본문 — CC BY-SA 4.0</li>
+          <li>차량 사진 — Wikimedia Commons (사진마다 저작자·라이선스 표기)</li>
+          <li>답변 생성 — OpenAI 호환 GPT API (근거 문서만 사용)</li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>안내</h4>
+        <ul>
+          <li>답변은 색인된 문서만을 근거로 생성됩니다.</li>
+          <li>근거가 없으면 "확인되지 않음"으로 답합니다.</li>
+          <li>제원은 연식·트림·시장별로 다를 수 있습니다.</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== 설정 드로어 (F2005/F2006/F2014/F2015) ===== -->
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="drawer" id="settingsDrawer" aria-label="검색 설정" aria-hidden="true">
+    <div class="drawer__head">
+      <div>
+        <p class="eyebrow">Retrieval Settings</p>
+        <h3>검색 설정</h3>
+      </div>
+      <button class="icon-btn" id="closeSettings" aria-label="설정 닫기"><svg><use href="#ico-close"/></svg></button>
+    </div>
+    <div class="drawer__body">
+      <div class="field">
+        <div class="field__top"><label for="setTopK">근거 수 (Top-k)</label><output id="outTopK">6</output></div>
+        <input type="range" id="setTopK" min="2" max="12" step="1" value="6" />
+      </div>
+      <div class="field">
+        <span class="field__label">답변 모델</span>
+        <div class="segmented segmented--3" id="setModel"></div>
+        <p class="field__hint">검색어 추출·후보 선별은 <b id="utilityModel">—</b>가 맡고, 답변·비교·사실 확인은 여기서 고른 모델이 작성합니다.</p>
+      </div>
+      <div class="field">
+        <span class="field__label">검색 방식</span>
+        <div class="segmented" id="setMode">
+          <button type="button" data-mode="similarity" class="is-active">유사도</button>
+          <button type="button" data-mode="mmr">MMR</button>
+        </div>
+        <p class="field__hint">MMR은 후보를 넉넉히 가져온 뒤 내용이 겹치지 않게 근거를 고릅니다.</p>
+      </div>
+      <div class="field field--switch">
+        <label for="setCompareRag">RAG 전후 비교 <em class="field__sub">근거 없이 받은 답을 나란히</em></label>
+        <input type="checkbox" id="setCompareRag" class="switch" />
+      </div>
+      <div class="field field--switch">
+        <label for="setShowRetrieved">검색된 근거 전체 보기 <em class="field__sub">인용 안 된 청크 포함</em></label>
+        <input type="checkbox" id="setShowRetrieved" class="switch" />
+      </div>
+      <div class="field field--demo">
+        <span class="field__label">색인 설정 <em>서버 .env에서 변경</em></span>
+        <dl class="kv" id="serverInfo"><div><dt>상태</dt><dd>—</dd></div></dl>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 모바일 메뉴 -->
+  <nav class="mobile-menu" id="mobileMenu" aria-label="모바일 메뉴" hidden>
+    <a href="chat.html">AI 상담</a>
+    <a href="#workspace" data-goto="qa">모델 Q&amp;A</a>
+    <a href="#workspace" data-goto="explore">차량 탐색</a>
+    <a href="#workspace" data-goto="compare">제원 비교</a>
+    <a href="#workspace" data-goto="fact">사실 확인</a>
+    <a href="#chronicle">연대기</a>
+  </nav>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/chat-core.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

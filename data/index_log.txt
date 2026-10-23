@@ -1,0 +1,205 @@
+차량 200대 로드 · 청크 1000자 / 중복 200자 · DB 위치 C:\Users\SSAFY\.motorlab\chroma
+car_meta 색인: 200건
+  · 벤츠 파텐트 모토르바겐: 벤츠 페이턴트 모터바겐, Benz Patent-Motorwagen
+  · 메르세데스 35 hp: Mercedes 35 hp
+  · 포드 모델 T: 포드 모델 T, Ford Model T
+  · 포드 모델 A: 포드 모델 A (1927년), Ford Model A (1927–1932)
+  · 캐딜락 V-16: 캐딜락 V-16, Cadillac V-16
+  · 메르세데스-벤츠 260 D: Mercedes-Benz 260 D
+  · 폭스바겐 비틀: 폭스바겐 비틀, Volkswagen Beetle
+  · 윌리스 MB: 윌리스 MB, Willys MB
+  · 랜드로버 시리즈: Land Rover series
+  · 시트로엥 2CV: Citroën 2CV
+  · 포르쉐 356: 포르쉐 356, Porsche 356
+  · 폭스바겐 타입 2: Volkswagen Type 2
+  · 쉐보레 콜벳 (C1): Chevrolet Corvette (C1)
+  · 메르세데스-벤츠 300 SL: 메르세데스-벤츠 300 SL, Mercedes-Benz 300 SL
+  · BMW 이세타: 이세타, Isetta
+  · 쉐보레 벨 에어: Chevrolet Bel Air
+  · 시트로엥 DS: Citroën DS
+  · BMW 507: BMW 507
+  · 피아트 500 (누오바 500): 피아트 500, Fiat 500
+  · 모리스 미니: 미니, Mini
+  · 르노 4: Renault 4
+  · 볼보 P1800: Volvo P1800
+  · 재규어 E-타입: 재규어 E-타입, Jaguar E-Type
+  · 페라리 250 GTO: 페라리 250 GTO, Ferrari 250 GTO
+  · 메르세데스-벤츠 600: Mercedes-Benz 600
+  · 쉐보레 콜벳 스팅레이 (C2): 쉐보레 콜벳 C2, Chevrolet Corvette (C2)
+  · 애스턴 마틴 DB5: Aston Martin DB5
+  · 포르쉐 911 (초대): Porsche 911 (classic)
+  · 포드 GT40: 포드 GT40, Ford GT40
+  · 포드 머스탱 (1세대): Ford Mustang (first generation)
+  · 람보르기니 미우라: 람보르기니 미우라, Lamborghini Miura
+  · 토요타 코롤라 (1세대): Toyota Corolla (E10)
+  · 쉐보레 카마로 (1세대): Chevrolet Camaro (first generation)
+  · 토요타 2000GT: 토요타 2000GT, Toyota 2000GT
+  · BMW 2002: BMW 02 Series
+  · 아우디 100 (C1): 아우디 100, Audi 100
+  · 닛산 페어레이디 Z (S30): Nissan Fairlady Z (S30)
+  · BMW 3.0 CSL (E9): BMW E9
+  · 르노 5: 르노 5, Renault 5
+  · 혼다 시빅 (1세대): Honda Civic (first generation)
+  · 란치아 스트라토스: 란치아 스트라토스, Lancia Stratos
+  · 기아 브리사: 마쓰다 패밀리아, Mazda Familia
+  · 람보르기니 쿤타치: 람보르기니 쿤타치, Lamborghini Countach
+  · 현대 포니: 현대 포니, Hyundai Pony
+  · 메르세데스-벤츠 W123: Mercedes-Benz W123
+  · 폭스바겐 골프 GTI (1세대): Volkswagen Golf Mk1
+  · BMW M1: BMW M1, BMW M1
+  · 아우디 콰트로: 아우디 콰트로, Audi Quattro
+  · 메르세데스-벤츠 190 E (W201): Mercedes-Benz W201
+  · 현대 스텔라: 현대 스텔라, Hyundai Stellar
+  · 현대 엑셀 (포니 엑셀): 현대 엑셀, Hyundai Excel
+  · BMW M3 (E30): BMW M3, BMW M3
+  · 대우 르망: 대우 르망, Daewoo LeMans
+  · 포르쉐 959: 포르쉐 959, Porsche 959
+  · 기아 프라이드: 기아 프라이드, Kia Pride
+  · 페라리 F40: 페라리 F40, Ferrari F40
+  · 마쯔다 MX-5 (NA): Mazda MX-5 (NA)
+  · 현대 스쿠프: 현대 스쿠프, Hyundai Scoupe
+  · 혼다 NSX (1세대): Honda NSX (first generation)
+  · 대우 티코: 대우 티코, Daewoo Tico
+  · 현대 갤로퍼: Hyundai Galloper
+  · 마쯔다 RX-7 (FD): 마쓰다 RX-7, Mazda RX-7
+  · 맥라렌 F1: 맥라렌 F1, McLaren F1
+  · 스바루 임프레자 WRX (1세대): 스바루 임프레자, Subaru Impreza
+  · 쌍용 무쏘: 쌍용 무쏘, SsangYong Musso
+  · 쌍용 이스타나: 쌍용 이스타나, SsangYong Istana
+  · 현대 티뷰론: 현대 투스카니, Hyundai Tiburon
+  · 대우 라노스: 대우 라노스, Daewoo Lanos
+  · 대우 레간자: 대우 레간자, Daewoo Leganza
+  · 쌍용 체어맨: 쌍용 체어맨, SsangYong Chairman
+  · 토요타 프리우스 (1세대): Toyota Prius (XW10)
+  · 대우 마티즈: 쉐보레 스파크, Chevrolet Spark
+  · 아우디 TT (1세대): 아우디 TT, Audi TT
+  · 닛산 스카이라인 GT-R: Nissan Skyline GT-R
+  · 혼다 S2000: 혼다 S2000, Honda S2000
+  · 쌍용 로디우스: 쌍용 로디우스, SsangYong Rodius
+  · 포르쉐 카레라 GT: 포르쉐 카레라 GT, Porsche Carrera GT
+  · 부가티 베이론 16.4: 부가티 베이론, Bugatti Veyron
+  · 쌍용 액티언: 쌍용 액티언, SsangYong Actyon
+  · 쌍용 카이런: 쌍용 카이런, SsangYong Kyron
+  · 아우디 R8 (1세대): Audi R8 (Type 42)
+  · 닛산 GT-R (R35): 닛산 GT-R, Nissan GT-R
+  · 기아 모하비: 기아 모하비, Kia Mohave
+  · 테슬라 로드스터 (1세대): Tesla Roadster (first generation)
+  · 현대 제네시스 쿠페: 현대 제네시스 쿠페, Hyundai Genesis Coupe
+  · 캐딜락 CTS-V (2세대): 캐딜락 CTS, Cadillac CTS
+  · 닛산 리프 (1세대): Nissan Leaf (first generation)
+  · 렉서스 LFA: Lexus LFA
+  · 르노삼성 SM5 (3세대): 르노삼성 SM5, Renault Samsung SM5
+  · 기아 레이: 기아 레이, Kia Ray
+  · 쉐보레 볼트 (1세대): Chevrolet Volt (first generation)
+  · 쉐보레 올란도: 쉐보레 올란도, Chevrolet Orlando
+  · 르노 조에: 르노 조에, Renault Zoe
+  · 르노 트위지: 르노 트위지, Renault Twizy
+  · 테슬라 모델 S: 테슬라 모델 S, Tesla Model S
+  · BMW i3: BMW i3
+  · 라페라리: 페라리 라페라리, LaFerrari
+  · 포르쉐 918 스파이더: 포르쉐 918, Porsche 918 Spyder
+  · BMW i8: BMW i8, BMW i8
+  · 메르세데스-AMG GT: 메르세데스-AMG GT, Mercedes-AMG GT
+  · 현대 제네시스 (DH): 현대 제네시스, Hyundai Genesis
+  · 르노 에스파스 (5세대): 르노 에스파스, Renault Espace
+  · 마쯔다 MX-5 (ND): Mazda MX-5 (ND)
+  · 쉐보레 스파크 (M400): 쉐보레 스파크, Chevrolet Spark
+  · 쌍용 티볼리: KGM 티볼리, KGM Tivoli
+  · 르노 콜레오스 (QM6): 르노 콜레오스, Renault Koleos
+  · 르노삼성 SM6 (탈리스만): 르노 탈리스만, Renault Talisman
+  · 쉐보레 말리부 (9세대): 쉐보레 말리부, Chevrolet Malibu
+  · 쉐보레 카마로 (6세대): Chevrolet Camaro (sixth generation)
+  · 쉐보레 크루즈 (2세대): 쉐보레 크루즈, Chevrolet Cruze
+  · 알파 로메오 줄리아: Alfa Romeo Giulia (2015)
+  · 캐딜락 CT6: 캐딜락 CT6, Cadillac CT6
+  · 기아 스팅어: 기아 스팅어, Kia Stinger
+  · 렉서스 LS (5세대): 렉서스 LS, Lexus LS
+  · 쉐보레 볼트 EV: 쉐보레 볼트, Chevrolet Bolt
+  · 쌍용 렉스턴 (G4): KGM 렉스턴, SsangYong Rexton
+  · 알핀 A110: 알핀 A110 (2017), Alpine A110 (2017)
+  · 제네시스 G70: 제네시스 G70, Genesis G70
+  · 테슬라 모델 3: 테슬라 모델 3, Tesla Model 3
+  · 토요타 캠리 (XV70): Toyota Camry (XV70)
+  · 메르세데스-벤츠 G-클래스 (W463): 메르세데스-벤츠 G 클래스, Mercedes-Benz G-Class
+  · 지프 랭글러 (JL): Jeep Wrangler (JL)
+  · 현대 넥쏘: 현대 넥쏘, Hyundai Nexo
+  · 기아 K5 (3세대): 기아 K5, Kia K5
+  · 기아 셀토스: 기아 셀토스, Kia Seltos
+  · 쉐보레 실버라도: 쉐보레 실버라도, Chevrolet Silverado
+  · 쌍용 코란도 (4세대): KGM 코란도, SsangYong Korando
+  · 토요타 GR 수프라 (A90): 토요타 수프라, Toyota Supra
+  · 페라리 SF90 스트라달레: 페라리 SF90 스트라달레, Ferrari SF90 Stradale
+  · 포르쉐 911 카레라 (992): Porsche 911 (992)
+  · 포르쉐 타이칸: 포르쉐 타이칸, Porsche Taycan
+  · 폭스바겐 골프 (8세대): Volkswagen Golf Mk8
+  · 현대 쏘나타 (DN8): 현대 쏘나타, Hyundai Sonata
+  · 기아 쏘렌토 (MQ4): 기아 쏘렌토, Kia Sorento
+  · 기아 카니발 (KA4): 기아 카니발, Kia Carnival
+  · 랜드로버 디펜더 (L663): Land Rover Defender (L663)
+  · 르노 아르카나 (XM3): 르노 아르카나, Renault Arkana
+  · 메르세데스-벤츠 S-클래스 (W223): Mercedes-Benz S-Class (W223)
+  · 쉐보레 콜벳 (C8): 쉐보레 콜벳 C8, Chevrolet Corvette (C8)
+  · 쉐보레 트레일블레이저: 쉐보레 트레일블레이저 (크로스오버), Chevrolet Trailblazer (crossover)
+  · 제네시스 G80 (3세대): 제네시스 G80, Genesis G80
+  · 제네시스 GV70: 제네시스 GV70, Genesis GV70
+  · 제네시스 GV80: 제네시스 GV80, Genesis GV80
+  · 캐딜락 CT5: 캐딜락 CT5, Cadillac CT5
+  · 테슬라 모델 Y: 테슬라 모델 Y, Tesla Model Y
+  · 토요타 미라이 (2세대): 토요타 미라이, Toyota Mirai
+  · 포드 머스탱 마하-E: 포드 머스탱 마하-E, Ford Mustang Mach-E
+  · 폭스바겐 ID.4: 폭스바겐 ID.4, Volkswagen ID.4
+  · 현대 아반떼 (CN7): 현대 아반떼, Hyundai Elantra
+  · 현대 투싼 (NX4): 현대 투싼, Hyundai Tucson
+  · 혼다 e: Honda e
+  · 기아 EV6: 기아 EV6, Kia EV6
+  · 기아 K8: 기아 K8, Kia K8
+  · 기아 스포티지 (NQ5): 기아 스포티지, Kia Sportage
+  · 리비안 R1T: Rivian R1T
+  · 메르세데스-벤츠 EQS: 메르세데스-벤츠 EQS, Mercedes-Benz EQS
+  · 쉐보레 타호: 쉐보레 타호, Chevrolet Tahoe
+  · 아우디 Q4 e-트론: 아우디 Q4 e-트론, Audi Q4 e-tron
+  · 아우디 e-트론 GT: 아우디 e-트론 GT, Audi e-tron GT
+  · 제네시스 GV60: 제네시스 GV60, Genesis GV60
+  · 캐딜락 에스컬레이드 (5세대): 캐딜락 에스컬레이드, Cadillac Escalade
+  · 토요타 랜드크루저 (J300): 토요타 랜드크루저, Toyota Land Cruiser
+  · 포드 브롱코 (6세대): 포드 브롱코, Ford Bronco
+  · 현대 스타리아: 현대 스타리아, Hyundai Staria
+  · 현대 아이오닉 5: 아이오닉 5, Hyundai Ioniq 5
+  · 현대 캐스퍼: 현대 캐스퍼, Hyundai Casper
+  · BMW 7시리즈 (G70): BMW 7 Series (G70)
+  · BYD 씰: 비야디 씰, BYD Seal
+  · KGM 토레스: KGM 토레스, KGM Torres
+  · 르노 메간 E-Tech 일렉트릭: Renault Megane E-Tech Electric
+  · 제네시스 G90 (RS4): 제네시스 G90, Genesis G90
+  · 토요타 bZ4X: 토요타 bZ4X, Toyota bZ4X
+  · 포드 F-150 라이트닝: 포드 F-150, Ford F-150 Lightning
+  · 폭스바겐 ID. 버즈: Volkswagen ID. Buzz
+  · 현대 그랜저 (GN7): 현대 그랜저, Hyundai Grandeur
+  · 현대 아이오닉 6: 아이오닉 6, Hyundai Ioniq 6
+  · BMW 5시리즈 · i5 (G60): BMW 5 Series (G60)
+  · KGM 토레스 EVX: KGM 토레스, KGM Torres
+  · 기아 EV9: 기아 EV9, Kia EV9
+  · 람보르기니 레부엘토: 람보르기니 레부엘토, Lamborghini Revuelto
+  · 메르세데스-벤츠 E-클래스 (W214): Mercedes-Benz E-Class (W214)
+  · 쉐보레 트랙스 크로스오버: 쉐보레 트랙스, Chevrolet Trax
+  · 캐딜락 리릭: 캐딜락 리릭, Cadillac Lyriq
+  · 테슬라 사이버트럭: 테슬라 사이버트럭, Tesla Cybertruck
+  · 포드 머스탱 (7세대): 포드 머스탱 (7세대), Ford Mustang (seventh generation)
+  · 현대 싼타페 (MX5): 현대 싼타페, Hyundai Santa Fe
+  · KGM 액티언 (2세대): KGM 액티언, KGM Actyon
+  · 기아 EV3: 기아 EV3, Kia EV3
+  · 르노 5 E-Tech: 르노 5 E-테크, Renault 5 E-Tech
+  · 르노 그랑 콜레오스: 르노 콜레오스, Renault Koleos
+  · 쉐보레 이쿼녹스 EV: Chevrolet Equinox EV
+  · 캐딜락 셀레스틱: Cadillac Celestiq
+  · 포르쉐 마칸 일렉트릭: 포르쉐 마칸, Porsche Macan
+  · 기아 EV4: 기아 EV4, Kia EV4
+  · 메르세데스-벤츠 CLA (3세대): 메르세데스-벤츠 CLA, Mercedes-Benz CLA
+  · 캐딜락 에스컬레이드 IQ: Cadillac Escalade IQ
+  · 현대 아이오닉 9: 아이오닉 9, Hyundai Ioniq 9
+  · BMW iX3 (노이어 클라쎄): BMW iX3
+  · 메르세데스-벤츠 GLC (EQ 테크놀로지): 메르세데스-벤츠 GLC 일렉트릭, Mercedes-Benz GLC Electric
+  · 현대 팰리세이드 (2세대): 현대 팰리세이드, Hyundai Palisade
+
+현재 색인 — 메타데이터 200건 · 문서 345건 · 문서 청크 3047개
+exit=0

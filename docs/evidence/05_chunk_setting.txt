@@ -1,0 +1,15 @@
+CHUNK_SIZE=1000 CHUNK_OVERLAP=200 DB=<임시 폴더>/chroma_1000_200
+  포드 모델 T (746자) → 청크 1개
+  Ford Model T (7000자) → 청크 10개
+임시 컬렉션 car_docs 청크 수: 11
+
+CHUNK_SIZE=500 CHUNK_OVERLAP=100 DB=<임시 폴더>/chroma_500_100
+  포드 모델 T (746자) → 청크 2개
+  Ford Model T (7000자) → 청크 24개
+임시 컬렉션 car_docs 청크 수: 26
+
+CHUNK_SIZE=1000 CHUNK_OVERLAP=400 DB=<임시 폴더>/chroma_1000_400
+  포드 모델 T (746자) → 청크 1개
+  Ford Model T (7000자) → 청크 11개
+임시 컬렉션 car_docs 청크 수: 12
+
